@@ -15,6 +15,7 @@ program
   .parse(process.argv);
 
 const options = program.opts();
+console.log(options)
 
 const deleteNodeModules = (dir: string): void => {
   const items = fs.readdirSync(dir);
