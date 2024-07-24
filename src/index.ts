@@ -16,7 +16,23 @@ program
 
 const options = program.opts();
 
-const printBanner = () => {
+
+const deleteNodeModules = (dir: string): void => {
+  const items = fs.readdirSync(dir);
+  items.forEach((item) => {
+    const fullPath = path.join(dir, item);
+    if (fs.statSync(fullPath).isDirectory()) {
+      if (item === 'node_modules') {
+        console.log(chalk.red(`Removing ${fullPath}`));
+        rimraf.sync(fullPath);
+      } else {
+        deleteNodeModules(fullPath);
+      }
+    }
+  });
+};
+
+try {
   console.log(chalk.red(`
   ⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⢠⡆⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠈⣷⣄⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⣠⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀
@@ -36,25 +52,6 @@ const printBanner = () => {
 `));
   console.log(chalk.green(' Node Muncher - Clean up node_modules Directories '));
   console.log(chalk.red('-----------------------------------------------'));
-};
-
-const deleteNodeModules = (dir: string): void => {
-  const items = fs.readdirSync(dir);
-  items.forEach((item) => {
-    const fullPath = path.join(dir, item);
-    if (fs.statSync(fullPath).isDirectory()) {
-      if (item === 'node_modules') {
-        console.log(chalk.red(`Removing ${fullPath}`));
-        rimraf.sync(fullPath);
-      } else {
-        deleteNodeModules(fullPath);
-      }
-    }
-  });
-};
-
-try {
-  printBanner();
   console.log(chalk.green(`Starting to clean node_modules from ${options.directory}`));
   deleteNodeModules(options.directory);
   console.log(chalk.green('Cleaning completed!'));
