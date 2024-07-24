@@ -1,0 +1,24 @@
+{
+  "name": "nodemuncher",
+  "version": "1.0.4",
+  "main": "dist/index.js",
+  "bin": {
+    "clean-node-modules": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && npm run add-shebang",
+    "add-shebang": "prepend-file '#!/usr/bin/env node\\n' dist/index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.3.0",
+    "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "@types/rimraf": "^4.0.5",
+    "prepend-file": "^2.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.5.2"
+  }
+}
