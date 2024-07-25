@@ -5,7 +5,7 @@ To get started with NodeMuncher, simply install it globally via npm and run the 
 
 ### Package Details:
 ```bash
-npm-package-version: 1.1.0
+npm-package-version: 1.1.1
 npm-package-name: nodemuncher
 ```
 
@@ -26,7 +26,3 @@ If you want to target the current directory, simply omit the path:
 ```bash
 npx nodemuncher --directory .
 ```
-
----
-
-Feel free to tweak it further to fit your needs or style!
