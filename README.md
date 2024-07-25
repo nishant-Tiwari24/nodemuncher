@@ -3,16 +3,30 @@
 ### Usage:
 To get started with NodeMuncher, simply install it globally via npm and run the command with your desired directory:
 
-### pakage details:
+### Package Details:
 ```bash
-npm-package-version: 1.0.4
+npm-package-version: 1.1.0
 npm-package-name: nodemuncher
 ```
 
+### Installation:
 ```bash
-npm i -g nodemuncher || sudo i -g nodemuncher
-npx nodemuncher --directory ./path/to/your/project || npx nodemuncher --directory (without path takes the current path)
+npm install -g nodemuncher
 ```
---- 
+If you encounter permission issues, use:
+```bash
+sudo npm install -g nodemuncher
+```
+
+### Running NodeMuncher:
+```bash
+npx nodemuncher --directory ./path/to/your/project
+```
+If you want to target the current directory, simply omit the path:
+```bash
+npx nodemuncher --directory .
+```
+
+---
 
 Feel free to tweak it further to fit your needs or style!
